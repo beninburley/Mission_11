@@ -1,0 +1,149 @@
+/* General container for the book list */
+.book-list {
+  display: flex;
+  flex-direction: column; /* Stack cards vertically */
+  gap: 20px; /* Add spacing between cards */
+  margin-top: 20px;
+  min-width: 70%;
+}
+
+/* Individual book card styling */
+.card {
+  width: 100%; /* Make the card take up the full width of the container */
+  max-width: 100%; /* Ensure it doesn't exceed the container width */
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  background-color: #ffffff; /* Default light mode background */
+  color: #000000; /* Default light mode text */
+  transition:
+    transform 0.2s,
+    box-shadow 0.2s;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Header of the book card */
+.card-header {
+  background-color: #007bff; /* Default light mode header */
+  color: white;
+  padding: 10px 15px;
+  font-size: 1.25rem;
+  font-weight: bold;
+  text-align: center;
+}
+
+/* Body of the book card */
+.card-body {
+  padding: 15px;
+  background-color: #f9f9f9; /* Default light mode body */
+  display: flex;
+  flex-direction: column;
+}
+
+/* List group inside the card */
+.list-group-item {
+  border: none;
+  padding: 8px 0;
+  font-size: 0.95rem;
+}
+
+/* Buttons inside the card */
+.card-body .btn {
+  margin-top: 10px;
+  width: 100%;
+  font-size: 1rem;
+}
+
+/* Pagination controls */
+.pagination-controls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.pagination-controls button {
+  padding: 8px 12px;
+  font-size: 1rem;
+  border-radius: 4px;
+  border: 1px solid #007bff;
+  background-color: white;
+  color: #007bff;
+  cursor: pointer;
+  transition:
+    background-color 0.2s,
+    color 0.2s;
+}
+
+.pagination-controls button:hover {
+  background-color: #007bff;
+  color: white;
+}
+
+.pagination-controls button:disabled {
+  background-color: #e9ecef;
+  color: #6c757d;
+  cursor: not-allowed;
+}
+
+/* Dropdown for results per page */
+.results-dropdown {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin-top: 15px;
+}
+
+.results-dropdown select {
+  padding: 5px 10px;
+  font-size: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+/* Dark mode styles */
+@media (prefers-color-scheme: dark) {
+  .card {
+    background-color: #1e1e1e; /* Dark mode background */
+    color: #ffffff; /* Dark mode text */
+    border: 1px solid #444; /* Dark mode border */
+  }
+
+  .card-header {
+    background-color: #444; /* Dark mode header */
+    color: #ffffff;
+  }
+
+  .card-body {
+    background-color: #2c2c2c; /* Dark mode body */
+  }
+
+  .pagination-controls button {
+    background-color: #2c2c2c; /* Dark mode button background */
+    color: #ffffff; /* Dark mode button text */
+    border: 1px solid #555;
+  }
+
+  .pagination-controls button:hover {
+    background-color: #555;
+    color: #ffffff;
+  }
+
+  .pagination-controls button:disabled {
+    background-color: #333;
+    color: #777;
+  }
+
+  .results-dropdown select {
+    background-color: #2c2c2c; /* Dark mode dropdown background */
+    color: #ffffff; /* Dark mode dropdown text */
+    border: 1px solid #555;
+  }
+}
