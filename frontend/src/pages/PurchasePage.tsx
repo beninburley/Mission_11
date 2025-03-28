@@ -3,6 +3,7 @@ import Welcome from "../components/Welcome";
 import { useCart } from "../context/CartContext";
 import { CartItem } from "../types/CartItem";
 import { useState } from "react";
+import "./PurchasePage.css";
 
 function PurchasePage() {
   const navigate = useNavigate();
@@ -27,9 +28,10 @@ function PurchasePage() {
 
   return (
     <div className="container mt-5">
-      <Welcome />
       <div className="row justify-content-center">
-        <div className="col-md-6">
+        <div className="col-12 col-md-10 col-lg-8">
+          {" "}
+          {/* Adjusted column width */}
           <div className="card">
             <div className="card-header text-center">
               <h2>Purchase {title}</h2>

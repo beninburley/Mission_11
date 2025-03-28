@@ -15,12 +15,17 @@ namespace Mission_11.API.Controllers
             _context = temp;
         }
 
-        [HttpGet]
-        public IActionResult GetBooks(int pageHowMany = 5, int pageNum = 1, string sortOrder = "asc")
+        [HttpGet("AllBooks")]
+        public IActionResult GetBooks(int pageHowMany = 5, int pageNum = 1, string sortOrder = "asc", [FromQuery] List<string>? categories = null)
         {
             var totalNumBooks = _context.Books.Count();
 
             var booksQuery = _context.Books.AsQueryable();
+
+            if (categories != null && categories.Any())
+            {
+                booksQuery = booksQuery.Where(p => categories.Contains(p.Category));
+            }
 
             // Sorting logic
             booksQuery = sortOrder.ToLower() == "desc"
@@ -37,6 +42,13 @@ namespace Mission_11.API.Controllers
                 Books = apiReturn,
                 TotalNumBooks = totalNumBooks
             });
+        }
+
+        [HttpGet("GetBookTypes")]
+        public IActionResult GetBookTypes() {
+            var categories = _context.Books.Select(b => b.Category).Distinct().ToList();
+
+            return Ok(categories);
         }
 
     }
