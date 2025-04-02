@@ -1,35 +1,44 @@
 import { useState, useEffect } from "react";
 import { Book } from "../types/Book";
 import { useNavigate } from "react-router-dom";
+import Pagination from "./Pagination";
+import { fetchBooks } from "../api/BooksAPI";
 import "./BookList.css";
 
 function BookList({ selectedCategories }: { selectedCategories: string[] }) {
   const [books, setBooks] = useState<Book[]>([]);
   const [pageSize, setPageSize] = useState<number>(10);
   const [pageNum, setPageNum] = useState<number>(1);
-  const [totalItems, setTotalItems] = useState<number>(0);
   const [totalPages, setTotalPages] = useState<number>(0);
   const [sortOrder, setSortOrder] = useState<"asc" | "desc">("asc");
   const navigate = useNavigate();
+  const [error, setError] = useState<string | null>(null);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const fetchBooks = async () => {
-      const categoryParams = selectedCategories
-        .map((cat) => `categories=${encodeURIComponent(cat)}`)
-        .join("&");
+    const loadBooks = async () => {
+      try {
+        setLoading(true);
+        const data = await fetchBooks(
+          pageSize,
+          pageNum,
+          sortOrder,
+          selectedCategories
+        );
 
-      const response = await fetch(
-        `https://localhost:5000/api/Book/AllBooks?pageHowMany=${pageSize}&pageNum=${pageNum}&sortOrder=${sortOrder}${selectedCategories.length ? `&${categoryParams}` : ""}`
-      );
-      const data = await response.json();
-      console.log("Fetched books:", data); // Debugging the response
-      setBooks(data.books);
-      setTotalItems(data.totalNumBooks);
-      setTotalPages(Math.ceil(totalItems / pageSize));
+        setBooks(data.books);
+        setTotalPages(Math.ceil(data.totalNumBooks / pageSize));
+      } catch (error) {
+        setError((error as Error).message);
+      } finally {
+        setLoading(false);
+      }
     };
+    loadBooks();
+  }, [pageSize, pageNum, sortOrder, selectedCategories]);
 
-    fetchBooks();
-  }, [pageSize, pageNum, totalItems, sortOrder, selectedCategories]);
+  if (loading) return <p>Loading projects...</p>;
+  if (error) return <p className="text-red-500">Error: {error}</p>;
 
   return (
     <>
@@ -108,21 +117,16 @@ function BookList({ selectedCategories }: { selectedCategories: string[] }) {
           Next
         </button>
       </div>
-      <div className="mt-3 d-flex justify-content-center align-items-center gap-2">
-        <label className="fw-bold">Results per page:</label>
-        <select
-          className="form-select w-auto"
-          value={pageSize}
-          onChange={(p) => {
-            setPageSize(Number(p.target.value));
-            setPageNum(1);
-          }}
-        >
-          <option value="5">5</option>
-          <option value="10">10</option>
-          <option value="20">20</option>
-        </select>
-      </div>
+      <Pagination
+        currentPage={pageNum}
+        totalPages={totalPages}
+        pageSize={pageSize}
+        onPageChange={setPageNum}
+        onPageSizeChange={(newSize) => {
+          setPageSize(newSize);
+          setPageNum(1);
+        }}
+      />
     </>
   );
 }
