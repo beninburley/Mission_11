@@ -1,0 +1,4 @@
+{
+  "appService.defaultWebAppToDeploy": "undefined/subscriptions/a0150cca-77e9-4309-84d6-4991179006f1/resourceGroups/appsvc_windows_centralus/providers/Microsoft.Web/sites/Mission13-Benjamin-Hansen-Backend",
+  "appService.deploySubpath": "backend\\Mission_11.API\\publish"
+}
