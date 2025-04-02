@@ -140,3 +140,9 @@ C:\Users\BenIn\OneDrive\Desktop\IS 413\Mission_11\backend\Mission_11.API\obj\Deb
 C:\Users\BenIn\OneDrive\Desktop\IS 413\Mission_11\backend\Mission_11.API\obj\Debug\net8.0\Mission_11.API.genruntimeconfig.cache
 C:\Users\BenIn\OneDrive\Desktop\IS 413\Mission_11\backend\Mission_11.API\obj\Debug\net8.0\ref\Mission_11.API.dll
 C:\Users\BenIn\OneDrive\Desktop\IS 413\Mission_11\backend\Mission_11.API\bin\Debug\net8.0\Bookstore.sqlite
+C:\Users\BenIn\OneDrive\Desktop\IS 413\Mission_11\backend\Mission_11.API\bin\Debug\net8.0\publish\web.config
+C:\Users\BenIn\OneDrive\Desktop\IS 413\Mission_11\backend\Mission_11.API\bin\Debug\net8.0\publish\appsettings.Development.json
+C:\Users\BenIn\OneDrive\Desktop\IS 413\Mission_11\backend\Mission_11.API\bin\Debug\net8.0\publish\appsettings.json
+C:\Users\BenIn\OneDrive\Desktop\IS 413\Mission_11\backend\Mission_11.API\bin\Debug\net8.0\publish\Mission_11.API.deps.json
+C:\Users\BenIn\OneDrive\Desktop\IS 413\Mission_11\backend\Mission_11.API\bin\Debug\net8.0\publish\Mission_11.API.runtimeconfig.json
+C:\Users\BenIn\OneDrive\Desktop\IS 413\Mission_11\backend\Mission_11.API\bin\Debug\net8.0\publish\Mission_11.API.staticwebassets.endpoints.json

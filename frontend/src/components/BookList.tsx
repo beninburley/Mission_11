@@ -91,32 +91,7 @@ function BookList({ selectedCategories }: { selectedCategories: string[] }) {
           </div>
         ))}
       </div>
-      <div className="d-flex justify-content-center align-items-center gap-2 mt-3">
-        <button
-          className="btn btn-outline-primary"
-          disabled={pageNum === 1}
-          onClick={() => setPageNum(pageNum - 1)}
-        >
-          Previous
-        </button>
-        {[...Array(totalPages)].map((_, index) => (
-          <button
-            key={index + 1}
-            className={`btn ${pageNum === index + 1 ? "btn-primary" : "btn-outline-primary"}`}
-            onClick={() => setPageNum(index + 1)}
-            disabled={pageNum === index + 1}
-          >
-            {index + 1}
-          </button>
-        ))}
-        <button
-          className="btn btn-outline-primary"
-          disabled={pageNum === totalPages}
-          onClick={() => setPageNum(pageNum + 1)}
-        >
-          Next
-        </button>
-      </div>
+
       <Pagination
         currentPage={pageNum}
         totalPages={totalPages}
